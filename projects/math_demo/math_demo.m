@@ -1,20 +1,9 @@
-%% Math Demo Script
-% Author: Hexadecimal-bot
-% Description: First math project in MATLAB + GitHub
+% --- Save output inside script's folder ---
+currentFolder = fileparts(mfilename('fullpath'));   % script's folder
+outFile = fullfile(currentFolder, 'math_plot.png');
 
-clc; clear; close all;
+ax = gca;  % get current axes
+exportgraphics(ax, outFile, 'Resolution', 300);  % save axes as PNG
 
-x = 0:0.1:10;
-y1 = sin(x);
-y2 = cos(x);
+disp(['✅ Math demo complete. Plot saved at: ' outFile]);
 
-plot(x, y1, 'r', 'LineWidth', 1.5); hold on;
-plot(x, y2, 'b--', 'LineWidth', 1.5);
-legend('sin(x)', 'cos(x)');
-xlabel('x'); ylabel('Value');
-title('Sine and Cosine Demo');
-
-% Save figure
-saveas(gcf, 'math_plot.png');
-
-disp('✅ Math demo complete. Plot saved as math_plot.png');
